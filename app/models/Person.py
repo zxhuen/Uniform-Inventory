@@ -1,12 +1,31 @@
-from sqlalchemy import Column, Integer, String, DateTime, func
+from __future__ import annotations
+
+from datetime import datetime
+from decimal import Decimal
+from uuid import uuid4
+
+from sqlalchemy import DateTime, ForeignKey, Integer, Numeric, String, Text, func, UUID
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from app.core.database import Base
 
-class Person(Base):
-    __tablename__ = "Person"
 
-    id = Column(Integer, primary_key=True, index=True)
-    last_name = Column(String, nullable=False)
-    first_name = Column(String, nullable=False)
-    middle_name = Column(String, nullable=True)
-    age = Column(Integer, nullable=False)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[UUID] = mapped_column(UUID, primary_key=True)
+    email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
+    display_name: Mapped[str] = mapped_column(String(255), nullable=False)
+    avatar_url: Mapped[str | None] = mapped_column(Text)
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+        nullable=False,
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+        onupdate=func.now(),
+        nullable=False,
+    )
