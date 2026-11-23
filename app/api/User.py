@@ -5,7 +5,7 @@ from app.schemas import PersonCreate, PersonResponse
 from app.services import add_person_services, list_person_services, edit_person_services, delete_person_services
 from app.core.limiter import limiter
 
-router = APIRouter(prefix="/Person", tags=["Person"])
+router = APIRouter(prefix="/User", tags=["User"])
 
 @router.post("/", response_model=PersonResponse)
 @limiter.limit("10/minute")

@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from app.main import app
 from app.core.database import Base, get_db
 
-from app.models import Person
+from app.models import User
 
 SQLALCHEMY_DATABASE_URL = ""
 
@@ -31,7 +31,7 @@ def create_test_database():
 def cleanup(db):
     yield
 
-    db.query(Person).delete()
+    db.query(User).delete()
     
     db.commit()
 

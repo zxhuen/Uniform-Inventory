@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.repository import create_person_repo, get_person_repo, edit_person_repo, delete_person_repo
+from app.Repository.Person_Repo import create_person_repo, get_person_repo, edit_person_repo, delete_person_repo
 from app.schemas import PersonCreate
 from fastapi import HTTPException
 import logging  

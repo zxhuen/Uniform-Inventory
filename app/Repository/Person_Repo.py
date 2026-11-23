@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.models.Person import Person
+from app.models.User import Person
 from app.schemas.Person import PersonCreate, PersonResponse
 
 def create_person_repo(db: Session, Persons: PersonCreate):
