@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from app.models.User import Person
-from app.schemas.Person import PersonCreate, PersonResponse
+from app.modules.people.schemas import PersonCreate, PersonResponse
 
 def create_person_repo(db: Session, Persons: PersonCreate):
     db_person = Person(**Persons.model_dump())

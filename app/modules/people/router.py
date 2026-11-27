@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Request, Depends
 from sqlalchemy.orm import Session
 from app.core.database import get_db
-from app.schemas import PersonCreate, PersonResponse
-from app.services import add_person_services, list_person_services, edit_person_services, delete_person_services
+from app.modules.people.schemas import PersonCreate, PersonResponse
+from app.modules.people.service import add_person_services, list_person_services, edit_person_services, delete_person_services
 from app.core.limiter import limiter
 
 router = APIRouter(prefix="/User", tags=["User"])
